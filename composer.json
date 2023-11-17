@@ -1,0 +1,58 @@
+{
+    "name": "cuonggt/trecms",
+    "description": "An opinionated CMS for the Laravel framework.",
+    "keywords": [
+        "trecms",
+        "laravel"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/cuonggt/trecms/issues",
+        "source": "https://github.com/cuonggt/trecms"
+    },
+    "authors": [
+        {
+            "name": "Cuong Giang",
+            "email": "thaicuong.giang@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "cviebrock/eloquent-sluggable": "^10.0",
+        "livewire/volt": "^1.4"
+    },
+    "require-dev": {
+        "laravel/folio": "^1.1",
+        "laravel/pint": "^1.0",
+        "laravel/sanctum": "^3.0",
+        "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cuonggt\\Trecms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cuonggt\\Trecms\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cuonggt\\Trecms\\TrecmsCoreServiceProvider"
+            ],
+            "aliases": {
+                "Trecms": "Cuonggt\\Trecms\\Trecms"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
