@@ -39,7 +39,7 @@ with(fn () => [
                                     {{ $post->author->name }}
                                 </td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                    <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}" class="text-indigo-600 hover:text-indigo-900" wire:navigate>
+                                    <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}" class="text-lime-600 hover:text-lime-900 hover:underline" wire:navigate>
                                         {{ __('Edit') }}<span class="sr-only">, {{ $post->title }}</span>
                                     </a>
                                 </td>
