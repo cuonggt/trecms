@@ -23,6 +23,7 @@ $createPost = function () {
     $post = Trecms::newPostModel()->forceCreate([
         'user_id' => auth()->user()->id,
         'title' => $validated['title'],
+        'excerpt' => $validated['excerpt'],
         'content' => $validated['content'],
         'status' => 'publish',
         'published_at' => now(),

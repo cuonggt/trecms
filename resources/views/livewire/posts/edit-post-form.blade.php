@@ -18,12 +18,14 @@ $updatePost = function () {
     $validated = $this->validate([
         'title' => ['required', 'string', 'max:255'],
         'slug' => ['required', 'string', 'max:255', Rule::unique('posts', 'slug')->ignore($this->post)],
+        'excerpt' => ['string'],
         'content' => ['string'],
     ]);
 
     $this->post->update([
         'title' => $validated['title'],
         'slug' => $validated['slug'],
+        'excerpt' => $validated['excerpt'],
         'content' => $validated['content'],
     ]);
 };
