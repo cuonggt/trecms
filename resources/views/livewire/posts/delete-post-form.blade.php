@@ -7,7 +7,9 @@ state('post');
 $deletePost = function () {
     $this->post->delete();
 
-    return redirect()->route('admin.posts.index');
+    session()->flash('notify', 'Post deleted successfully!');
+
+    return $this->redirect(route('admin.posts.index'), true);
 };
 
 ?>

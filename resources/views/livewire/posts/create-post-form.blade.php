@@ -29,7 +29,9 @@ $createPost = function () {
         'published_at' => now(),
     ]);
 
-    return redirect()->route('admin.posts.edit', ['id' => $post->id]);
+    session()->flash('notify', 'Post created successfully!');
+
+    return $this->redirect(route('admin.posts.edit', ['id' => $post->id]), true);
 };
 
 ?>

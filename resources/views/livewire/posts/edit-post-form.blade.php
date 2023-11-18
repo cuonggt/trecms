@@ -28,6 +28,8 @@ $updatePost = function () {
         'excerpt' => $validated['excerpt'],
         'content' => $validated['content'],
     ]);
+
+    $this->dispatch('notify', 'Post updated successfully!');
 };
 
 ?>

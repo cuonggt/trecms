@@ -26,5 +26,7 @@
                 </main>
             </div>
         </div>
+
+        <x-trecms::notifications :message="session('notify')" />
     </body>
 </html>
