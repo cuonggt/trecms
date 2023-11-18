@@ -31,7 +31,10 @@
             >
                 <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 pb-4 ring-1 ring-white/10">
                     <div class="flex h-16 shrink-0 items-center">
-                        <a href="{{ \Cuonggt\Trecms\Trecms::path() }}" class="text-xl font-bold leading-5 tracking-tight text-gray-950">{{ config('app.name', 'TreCMS') }}</a>
+                        <x-trecms::application-logo class="w-8 h-8 mr-2" />
+                        <a href="{{ \Cuonggt\Trecms\Trecms::path() }}" class="text-xl font-bold leading-5 tracking-tight text-gray-950">
+                            {{ config('app.name', 'TreCMS') }}
+                        </a>
                     </div>
                     <nav class="flex flex-1 flex-col">
                         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -61,6 +64,7 @@
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-50 px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center">
+                <x-trecms::application-logo class="w-8 h-8 mr-2" />
                 <a href="{{ \Cuonggt\Trecms\Trecms::path() }}" class="text-xl font-bold leading-5 tracking-tight text-gray-950">{{ config('app.name', 'TreCMS') }}</a>
             </div>
             <nav class="flex flex-1 flex-col">
