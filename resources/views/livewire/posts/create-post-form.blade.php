@@ -1,7 +1,6 @@
 <?php
 
 use Cuonggt\Trecms\Trecms;
-
 use function Livewire\Volt\rules;
 use function Livewire\Volt\state;
 
@@ -29,7 +28,7 @@ $createPost = function () {
         'published_at' => now(),
     ]);
 
-    session()->flash('notify', 'Post created successfully!');
+    session()->flash('notify', __('Post created successfully!'));
 
     return $this->redirect(route('admin.posts.edit', ['id' => $post->id]), true);
 };

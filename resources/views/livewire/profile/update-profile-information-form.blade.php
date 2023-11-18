@@ -1,7 +1,6 @@
 <?php
 
 use Cuonggt\Trecms\Trecms;
-
 use function Livewire\Volt\state;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -27,7 +26,7 @@ $updateProfileInformation = function () {
 
     $user->save();
 
-    $this->dispatch('notify', 'Profile updated!');
+    $this->dispatch('notify', __('Profile updated successfully!'));
 };
 
 ?>

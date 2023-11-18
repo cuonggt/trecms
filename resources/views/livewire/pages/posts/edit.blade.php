@@ -41,7 +41,7 @@ with(fn () => [
                 x-data=""
                 @click="$dispatch('open-modal', 'confirm-post-deletion')"
             >
-                Delete
+                {{ __('Delete') }}
             </x-trecms::danger-button>
         </div>
     </header>

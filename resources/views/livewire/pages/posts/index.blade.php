@@ -30,7 +30,7 @@ layout('trecms::layouts.app');
         </div>
         <div class="gap-3 flex flex-wrap items-center justify-start shrink-0 sm:mt-7">
             <a href="{{ route('admin.posts.create') }}" wire:navigate>
-                <x-trecms::primary-button>New post</x-trecms::primary-button>
+                <x-trecms::primary-button>{{ __('New post') }}</x-trecms::primary-button>
             </a>
         </div>
     </header>

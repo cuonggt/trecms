@@ -29,7 +29,7 @@ $updatePost = function () {
         'content' => $validated['content'],
     ]);
 
-    $this->dispatch('notify', 'Post updated successfully!');
+    $this->dispatch('notify', __('Post updated successfully!'));
 };
 
 ?>
