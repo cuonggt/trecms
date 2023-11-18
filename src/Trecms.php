@@ -21,7 +21,7 @@ class Trecms
     /**
      * Get the current Trecms version.
      */
-    public static function version()
+    public static function version(): string
     {
         return 'v0.1.0';
     }
@@ -45,7 +45,7 @@ class Trecms
     /**
      * Get the name of the user model used by the application.
      */
-    public static function userModel()
+    public static function userModel(): string
     {
         return static::$userModel;
     }
@@ -63,7 +63,7 @@ class Trecms
     /**
      * Specify the user model that should be used by Trecms.
      */
-    public static function useUserModel(string $model)
+    public static function useUserModel(string $model): static
     {
         static::$userModel = $model;
 
@@ -73,7 +73,7 @@ class Trecms
     /**
      * Get the name of the post model used by the application.
      */
-    public static function postModel()
+    public static function postModel(): string
     {
         return static::$postModel;
     }
@@ -90,10 +90,8 @@ class Trecms
 
     /**
      * Specify the post model that should be used by Trecms.
-     *
-     * @return static
      */
-    public static function usePostModel(string $model)
+    public static function usePostModel(string $model): static
     {
         static::$postModel = $model;
 

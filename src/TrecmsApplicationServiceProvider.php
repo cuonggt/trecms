@@ -28,7 +28,7 @@ class TrecmsApplicationServiceProvider extends ServiceProvider
         $this->authorization();
     }
 
-    protected function installVolt()
+    protected function installVolt(): void
     {
         Volt::mount([
             base_path('vendor/cuonggt/trecms/resources/views/livewire'),
@@ -37,7 +37,7 @@ class TrecmsApplicationServiceProvider extends ServiceProvider
         ]);
     }
 
-    protected function installFolio()
+    protected function installFolio(): void
     {
         Folio::path(resource_path('views/pages'))->middleware([
             '*' => [
@@ -50,10 +50,8 @@ class TrecmsApplicationServiceProvider extends ServiceProvider
      * Register the Trecms gate.
      *
      * This gate determines who can access Trecms in non-local environments.
-     *
-     * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewTrecms', function ($user) {
             return in_array($user->email, [
@@ -64,10 +62,8 @@ class TrecmsApplicationServiceProvider extends ServiceProvider
 
     /**
      * Configure the Trecms authorization services.
-     *
-     * @return void
      */
-    protected function authorization()
+    protected function authorization(): void
     {
         Trecms::auth(function ($request) {
             return app()->environment('local') ||

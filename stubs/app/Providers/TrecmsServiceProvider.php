@@ -27,10 +27,8 @@ class TrecmsServiceProvider extends TrecmsApplicationServiceProvider
      * Register the Trecms gate.
      *
      * This gate determines who can access Trecms in non-local environments.
-     *
-     * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewTrecms', function ($user) {
             return in_array($user->email, [

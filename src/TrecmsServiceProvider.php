@@ -29,10 +29,8 @@ class TrecmsServiceProvider extends ServiceProvider
 
     /**
      * Register the package's publishable resources.
-     *
-     * @return void
      */
-    protected function registerPublishing()
+    protected function registerPublishing(): void
     {
         $this->publishes([
             __DIR__.'/../config/trecms.php' => config_path('trecms.php'),

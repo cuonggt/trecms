@@ -2,6 +2,8 @@
 
 namespace Cuonggt\Trecms;
 
+use Illuminate\Http\Request;
+
 trait AuthorizesRequests
 {
     /**
@@ -15,9 +17,8 @@ trait AuthorizesRequests
      * Register the Trecms authentication callback.
      *
      * @param  \Closure(\Illuminate\Http\Request):bool  $callback
-     * @return static
      */
-    public static function auth($callback)
+    public static function auth($callback): static
     {
         static::$authUsing = $callback;
 
@@ -26,11 +27,8 @@ trait AuthorizesRequests
 
     /**
      * Determine if the given request can access the Trecms dashboard.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return bool
      */
-    public static function check($request)
+    public static function check(Request $request): bool
     {
         return (static::$authUsing ?: function () {
             return app()->environment('local');

@@ -27,7 +27,7 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return int|null
+     * @return void
      */
     public function handle()
     {
@@ -43,13 +43,13 @@ class InstallCommand extends Command
     /**
      * Install the TreCMS stack.
      *
-     * @return int|null
+     * @return void
      */
     protected function installStack()
     {
         // Install Folio...
         if (! $this->requireComposerPackages(['laravel/folio:^1.1'])) {
-            return 1;
+            return;
         }
 
         // Service Providers...
@@ -112,12 +112,8 @@ class InstallCommand extends Command
 
     /**
      * Install the service provider in the application configuration file.
-     *
-     * @param  string  $after
-     * @param  string  $name
-     * @return void
      */
-    protected function installServiceProviderAfter($after, $name)
+    protected function installServiceProviderAfter(string $after, string $name): void
     {
         if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
             file_put_contents(config_path('app.php'), str_replace(
@@ -132,9 +128,8 @@ class InstallCommand extends Command
      * Installs the given Composer Packages into the application.
      *
      * @param  mixed  $packages
-     * @return bool
      */
-    protected function requireComposerPackages($packages)
+    protected function requireComposerPackages($packages): bool
     {
         $command = array_merge(
             ['composer', 'require'],
@@ -150,11 +145,8 @@ class InstallCommand extends Command
 
     /**
      * Update the "package.json" file.
-     *
-     * @param  bool  $dev
-     * @return void
      */
-    protected static function updateNodePackages(callable $callback, $dev = true)
+    protected static function updateNodePackages(callable $callback, bool $dev = true): void
     {
         if (! file_exists(base_path('package.json'))) {
             return;
@@ -180,18 +172,15 @@ class InstallCommand extends Command
     /**
      * Replace a given string within a given file.
      */
-    protected function replaceInFile(string $search, string $replace, string $path)
+    protected function replaceInFile(string $search, string $replace, string $path): void
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }
 
     /**
      * Run the given commands.
-     *
-     * @param  array  $commands
-     * @return void
      */
-    protected function runCommands($commands)
+    protected function runCommands(array $commands): void
     {
         $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
 

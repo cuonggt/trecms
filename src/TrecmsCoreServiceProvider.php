@@ -9,10 +9,8 @@ class TrecmsCoreServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/trecms.php', 'trecms'
@@ -21,10 +19,8 @@ class TrecmsCoreServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any package services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->app->register(TrecmsServiceProvider::class);
@@ -35,27 +31,19 @@ class TrecmsCoreServiceProvider extends ServiceProvider
 
     /**
      * Register the package resources such as routes, templates, etc.
-     *
-     * @return void
      */
-    protected function registerResources()
+    protected function registerResources(): void
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'trecms');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->registerRoutes();
-
-        // Volt::mount([
-        //     __DIR__.'/../resources/views/livewire',
-        // ]);
     }
 
     /**
      * Register the package routes.
-     *
-     * @return void
      */
-    protected function registerRoutes()
+    protected function registerRoutes(): void
     {
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
