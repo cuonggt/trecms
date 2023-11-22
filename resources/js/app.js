@@ -1,3 +1,4 @@
+import markdownEditorFormComponent from './markdown-editor';
 import { Editor } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -15,6 +16,8 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = true;
         },
     });
+
+    window.Alpine.data('markdownEditorFormComponent', markdownEditorFormComponent);
 
     window.Alpine.data('setupEditor', (content) => {
         let editor;

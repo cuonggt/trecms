@@ -17,6 +17,7 @@
         "@tiptap/starter-kit": "^2.1.12",
         "autoprefixer": "^10.4.2",
         "axios": "^1.1.2",
+        "easymde": "^2.18.0",
         "eslint": "^8.53.0",
         "eslint-plugin-import": "^2.29.0",
         "laravel-vite-plugin": "^0.8.0",
