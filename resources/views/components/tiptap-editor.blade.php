@@ -1,11 +1,11 @@
 <div
-    x-data="setupEditor(
-        $wire.entangle('{{ $attributes->wire('model')->value() }}')
-    )"
+    x-data="tiptapEditor({
+        state: $wire.entangle('{{ $attributes->wire('model')->value() }}')
+    })"
     wire:ignore
     {!! $attributes->whereDoesntStartWith('wire:model') !!}
 >
-    <template x-if="isLoaded()">
+    <template x-if="editor()">
         <div class="flex space-x-4 items-center dark:text-neutral-100 fill-current py-2">
             <button type="button" @click.prevent="toggleBold()" :class="{ 'bg-gray-200 rounded': isActive('bold', updatedAt) }" class="p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bold"><path d="M14 12a4 4 0 0 0 0-8H6v8"/><path d="M15 20a4 4 0 0 0 0-8H6v8Z"/></svg>

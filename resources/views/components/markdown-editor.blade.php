@@ -1,5 +1,5 @@
 <div
-    x-data="markdownEditorFormComponent({
+    x-data="markdownEditor({
         state: $wire.entangle('{{ $attributes->wire('model')->value() }}')
     })"
     wire:ignore

@@ -78,7 +78,9 @@ $updatePost = function () {
                         <div>
                         <x-trecms::tiptap-editor
                             wire:model="content"
+                            id="content"
                             class="block mt-1 w-full"
+                            name="content"
                         />
                         </div>
                         <x-trecms::input-error :messages="$errors->get('content')" class="mt-2" />

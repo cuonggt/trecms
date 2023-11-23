@@ -37,7 +37,7 @@ import 'codemirror/mode/yaml/yaml';
 import EasyMDE from 'easymde';
 import 'easymde/dist/easymde.min.css';
 
-export default function markdownEditorFormComponent({ state }) {
+export default function markdownEditor({ state }) {
     return {
         editor: null,
 
