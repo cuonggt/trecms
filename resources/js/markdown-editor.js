@@ -35,7 +35,7 @@ import 'codemirror/mode/vue/vue';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/yaml/yaml';
 import EasyMDE from 'easymde';
-import 'easymde/dist/easymde.min.css';
+import '../css/markdown-editor.css';
 
 export default function markdownEditor({ state }) {
     return {
@@ -45,13 +45,23 @@ export default function markdownEditor({ state }) {
 
         init: async function () {
             this.editor = new EasyMDE({
+                autoDownloadFontAwesome: false,
                 autoRefresh: true,
                 autoSave: false,
                 element: this.$refs.editor,
+                imageAccept: 'image/png, image/jpeg, image/gif, image/avif',
                 initialValue: this.state ?? '',
                 minHeight: '12rem',
                 previewImagesInEditor: true,
                 spellChecker: false,
+                status: [
+                    {
+                        className: 'upload-image',
+                        defaultValue: '',
+                    },
+                ],
+                toolbar: this.getToolbar(),
+                uploadImage: true,
             });
 
             this.editor.codemirror.setOption(
@@ -134,6 +144,85 @@ export default function markdownEditor({ state }) {
         destroy: function () {
             this.editor.cleanup();
             this.editor = null;
+        },
+
+        getToolbar: function () {
+            let toolbar = [];
+
+            toolbar.push({
+                name: 'bold',
+                action: EasyMDE.toggleBold,
+            });
+
+            toolbar.push({
+                name: 'italic',
+                action: EasyMDE.toggleItalic,
+            });
+
+            toolbar.push({
+                name: 'strikethrough',
+                action: EasyMDE.toggleStrikethrough,
+            });
+
+            toolbar.push({
+                name: 'link',
+                action: EasyMDE.drawLink,
+            });
+
+            toolbar.push('|');
+
+            toolbar.push({
+                name: 'heading',
+                action: EasyMDE.toggleHeadingSmaller,
+            });
+
+            toolbar.push('|');
+
+            toolbar.push({
+                name: 'quote',
+                action: EasyMDE.toggleBlockquote,
+            });
+
+            toolbar.push({
+                name: 'code',
+                action: EasyMDE.toggleCodeBlock,
+            });
+
+            toolbar.push({
+                name: 'unordered-list',
+                action: EasyMDE.toggleUnorderedList,
+            });
+
+            toolbar.push({
+                name: 'ordered-list',
+                action: EasyMDE.toggleOrderedList,
+            });
+
+            toolbar.push('|');
+
+            toolbar.push({
+                name: 'table',
+                action: EasyMDE.drawTable,
+            });
+
+            // toolbar.push({
+            //     name: 'upload-image',
+            //     action: EasyMDE.drawUploadedImage,
+            // });
+
+            toolbar.push('|');
+
+            toolbar.push({
+                name: 'undo',
+                action: EasyMDE.undo,
+            });
+
+            toolbar.push({
+                name: 'redo',
+                action: EasyMDE.redo,
+            });
+
+            return toolbar;
         },
     };
 }
