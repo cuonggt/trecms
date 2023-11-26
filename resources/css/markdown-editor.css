@@ -140,7 +140,7 @@
 }
 
 .EasyMDEContainer .editor-toolbar button.active::before {
-    @apply bg-gray-600 dark:bg-gray-400;
+    @apply bg-lime-600 dark:bg-lime-400;
 }
 
 .EasyMDEContainer .editor-toolbar .separator {
