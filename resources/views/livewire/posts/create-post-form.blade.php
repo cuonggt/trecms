@@ -65,7 +65,7 @@ $createPost = function () {
                         <x-trecms::input-label for="content">
                             {{ __('Content') }}
                         </x-trecms::input-label>
-                        <x-trecms::tiptap-editor
+                        <x-trecms::markdown-editor
                             wire:model="content"
                             id="content"
                             class="block mt-1 w-full"

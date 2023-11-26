@@ -49,19 +49,11 @@ export default function markdownEditor({ state }) {
                 autoRefresh: true,
                 autoSave: false,
                 element: this.$refs.editor,
-                imageAccept: 'image/png, image/jpeg, image/gif, image/avif',
                 initialValue: this.state ?? '',
                 minHeight: '12rem',
                 previewImagesInEditor: true,
                 spellChecker: false,
-                status: [
-                    {
-                        className: 'upload-image',
-                        defaultValue: '',
-                    },
-                ],
                 toolbar: this.getToolbar(),
-                uploadImage: true,
             });
 
             this.editor.codemirror.setOption(
@@ -205,10 +197,10 @@ export default function markdownEditor({ state }) {
                 action: EasyMDE.drawTable,
             });
 
-            // toolbar.push({
-            //     name: 'upload-image',
-            //     action: EasyMDE.drawUploadedImage,
-            // });
+            toolbar.push({
+                name: 'image',
+                action: EasyMDE.drawImage,
+            });
 
             toolbar.push('|');
 

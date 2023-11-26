@@ -76,7 +76,7 @@ $updatePost = function () {
                             {{ __('Content') }}
                         </x-trecms::input-label>
                         <div>
-                        <x-trecms::tiptap-editor
+                        <x-trecms::markdown-editor
                             wire:model="content"
                             id="content"
                             class="block mt-1 w-full"
