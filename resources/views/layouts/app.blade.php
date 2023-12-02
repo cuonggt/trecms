@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'], 'vendor/trecms/build')
+        @vite(['resources/css/trecms.css', 'resources/js/trecms.js'], 'vendor/trecms/build')
     </head>
     <body class="font-sans antialiased h-full">
         <div>

@@ -1,19 +1,19 @@
 {
-  "resources/css/app.css": {
-    "file": "assets/app-1f82e140.css",
+  "resources/css/trecms.css": {
+    "file": "assets/trecms-1f82e140.css",
     "isEntry": true,
-    "src": "resources/css/app.css"
+    "src": "resources/css/trecms.css"
   },
-  "resources/js/app.css": {
-    "file": "assets/app-7b860cf2.css",
-    "src": "resources/js/app.css"
+  "resources/js/trecms.css": {
+    "file": "assets/trecms-7b860cf2.css",
+    "src": "resources/js/trecms.css"
   },
-  "resources/js/app.js": {
+  "resources/js/trecms.js": {
     "css": [
-      "assets/app-7b860cf2.css"
+      "assets/trecms-7b860cf2.css"
     ],
-    "file": "assets/app-3f4781e9.js",
+    "file": "assets/trecms-cb0f608b.js",
     "isEntry": true,
-    "src": "resources/js/app.js"
+    "src": "resources/js/trecms.js"
   }
 }
