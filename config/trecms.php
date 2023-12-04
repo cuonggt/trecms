@@ -4,11 +4,9 @@ use Cuonggt\Trecms\Http\Middleware\Authenticate;
 use Cuonggt\Trecms\Http\Middleware\Authorize;
 
 return [
-    'path' => '/admin',
+    'path' => env('TRECMS_PATH', '/admin'),
 
-    'middleware' => ['web'],
-
-    'auth_middleware' => [
+    'middleware'  => [
         Authenticate::class,
         Authorize::class,
     ],

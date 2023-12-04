@@ -3,14 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::middleware(config('trecms.middleware', ['web']))->group(function () {
+Route::middleware(['web'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     });
 
     Volt::route('login', 'pages.auth.login')->name('login');
 
-    Route::middleware(config('trecms.auth_middleware', ['auth', 'verified']))->group(function () {
+    Route::middleware(config('trecms.middleware', ['auth', 'verified']))->group(function () {
         Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
 
         Volt::route('profile', 'pages.profile')->name('profile');

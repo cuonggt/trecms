@@ -26,7 +26,23 @@ class TrecmsCoreServiceProvider extends ServiceProvider
             $this->app->register(TrecmsServiceProvider::class);
         }
 
+        $this->registerRoutes();
         $this->registerResources();
+        $this->registerMigrations();
+    }
+
+    /**
+     * Register the package routes.
+     */
+    protected function registerRoutes(): void
+    {
+        Route::group([
+            'namespace' => \Cuonggt\Trecms\Http\Controllers::class,
+            'prefix' => Trecms::path(),
+            'as' => 'admin.',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
+        });
     }
 
     /**
@@ -35,32 +51,13 @@ class TrecmsCoreServiceProvider extends ServiceProvider
     protected function registerResources(): void
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'trecms');
+    }
+
+    /**
+     * Register the package's migrations.
+     */
+    protected function registerMigrations(): void
+    {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        $this->registerRoutes();
-    }
-
-    /**
-     * Register the package routes.
-     */
-    protected function registerRoutes(): void
-    {
-        Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
-        });
-    }
-
-    /**
-     * Get the Trecms admin route group configuration array.
-     *
-     * @return array{namespace: string, prefix: string, as: string}
-     */
-    protected function routeConfiguration()
-    {
-        return [
-            'namespace' => 'Cuonggt\Trecms\Http\Controllers',
-            'prefix' => Trecms::path(),
-            'as' => 'admin.',
-        ];
     }
 }

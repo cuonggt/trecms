@@ -11,10 +11,7 @@ class TrecmsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->commands([
-            Console\InstallCommand::class,
-            Console\PublishCommand::class,
-        ]);
+        //
     }
 
     /**
@@ -22,9 +19,12 @@ class TrecmsServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->registerPublishing();
+        if (! $this->app->runningInConsole()) {
+            return;
         }
+
+        $this->registerPublishing();
+        $this->registerCommands();
     }
 
     /**
@@ -43,5 +43,16 @@ class TrecmsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'trecms-migrations');
+    }
+
+    /**
+     * Register the package's commands.
+     */
+    protected function registerCommands(): void
+    {
+        $this->commands([
+            Console\InstallCommand::class,
+            Console\PublishCommand::class,
+        ]);
     }
 }
