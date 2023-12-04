@@ -1,6 +1,6 @@
 <?php
 
-namespace Cuonggt\Trecms;
+namespace Cuonggt\Trecms\Concerns;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 

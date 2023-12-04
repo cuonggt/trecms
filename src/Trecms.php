@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trecms
 {
-    use AuthorizesRequests;
+    use Concerns\AuthorizesRequests;
 
     /**
      * The user model that should be used by Trecms.

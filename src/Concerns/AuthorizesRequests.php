@@ -1,6 +1,6 @@
 <?php
 
-namespace Cuonggt\Trecms;
+namespace Cuonggt\Trecms\Concerns;
 
 use Illuminate\Http\Request;
 
