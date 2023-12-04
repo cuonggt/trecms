@@ -4,7 +4,7 @@ namespace Cuonggt\Trecms;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trecms
+final class Trecms
 {
     use Concerns\AuthorizesRequests;
 

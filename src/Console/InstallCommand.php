@@ -115,7 +115,13 @@ class InstallCommand extends Command
      */
     protected function installServiceProviderAfter(string $after, string $name): void
     {
-        if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
+        $appConfig = file_get_contents(config_path('app.php'));
+
+        if (! $appConfig) {
+            return;
+        }
+
+        if (! Str::contains($appConfig, 'App\\Providers\\'.$name.'::class')) {
             file_put_contents(config_path('app.php'), str_replace(
                 'App\\Providers\\'.$after.'::class,',
                 'App\\Providers\\'.$after.'::class,'.PHP_EOL.'        App\\Providers\\'.$name.'::class,',
@@ -154,7 +160,13 @@ class InstallCommand extends Command
 
         $configurationKey = $dev ? 'devDependencies' : 'dependencies';
 
-        $packages = json_decode(file_get_contents(base_path('package.json')), true);
+        $json = file_get_contents(base_path('package.json'));
+
+        if (! $json) {
+            return;
+        }
+
+        $packages = json_decode($json, true);
 
         $packages[$configurationKey] = $callback(
             array_key_exists($configurationKey, $packages) ? $packages[$configurationKey] : [],
@@ -174,11 +186,17 @@ class InstallCommand extends Command
      */
     protected function replaceInFile(string $search, string $replace, string $path): void
     {
-        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+        $subject = file_get_contents($path);
+
+        if ($subject) {
+            file_put_contents($path, str_replace($search, $replace, $subject));
+        }
     }
 
     /**
      * Run the given commands.
+     *
+     * @param  array<string>  $commands
      */
     protected function runCommands(array $commands): void
     {

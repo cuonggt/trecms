@@ -37,7 +37,7 @@ class TrecmsCoreServiceProvider extends ServiceProvider
     protected function registerRoutes(): void
     {
         Route::group([
-            'namespace' => \Cuonggt\Trecms\Http\Controllers::class,
+            'namespace' => 'Cuonggt\Trecms\Http\Controllers',
             'prefix' => Trecms::path(),
             'as' => 'admin.',
         ], function () {

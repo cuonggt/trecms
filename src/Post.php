@@ -15,6 +15,9 @@ abstract class Post extends Model
         return $this->belongsTo(Trecms::userModel(), 'user_id');
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function sluggable(): array
     {
         return [

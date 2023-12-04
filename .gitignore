@@ -1,7 +1,10 @@
+/.idea
+/.vscode
+/node_modules
 /vendor
 composer.lock
 /phpunit.xml
-/.phpunit.cache
 .phpunit.result.cache
-/node_modules
 .eslintcache
+.env
+.idea
