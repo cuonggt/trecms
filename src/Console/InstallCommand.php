@@ -74,6 +74,10 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/View/Components', app_path('View/Components'));
 
+        // Tests...
+        (new Filesystem)->ensureDirectoryExists(base_path('tests/Feature'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/tests/Feature', base_path('tests/Feature'));
+
         // Routes...
         copy(__DIR__.'/../../stubs/routes/web.php', base_path('routes/web.php'));
 
