@@ -6,7 +6,7 @@ use Cuonggt\Trecms\Http\Middleware\Authorize;
 return [
     'path' => env('TRECMS_PATH', '/admin'),
 
-    'middleware'  => [
+    'middleware' => [
         Authenticate::class,
         Authorize::class,
     ],

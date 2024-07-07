@@ -48,7 +48,7 @@ layout('trecms::layouts.app');
                                         </a>
 
                                         <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                                            {{ \Cuonggt\Trecms\Trecms::version() }}
+                                            v{{ \Cuonggt\Trecms\Trecms::version() }}
                                         </p>
                                     </div>
                                     <div class="flex flex-col items-end gap-y-1">

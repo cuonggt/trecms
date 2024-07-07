@@ -17,18 +17,13 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-json": "*",
-        "cviebrock/eloquent-sluggable": "^10.0",
+        "cviebrock/eloquent-sluggable": "^11.0",
         "livewire/volt": "^1.4"
     },
     "require-dev": {
-        "laravel/folio": "^1.1",
-        "laravel/pint": "^1.0",
-        "laravel/sanctum": "^3.0",
-        "mockery/mockery": "^1.0",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.1"
+        "laravel/pint": "^1.16"
     },
     "autoload": {
         "psr-4": {

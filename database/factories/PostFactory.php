@@ -17,17 +17,11 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $content = '';
-        $paragraphs = $this->faker->paragraphs(3);
-        foreach ($paragraphs as $paragraph) {
-            $content .= "<p>{$paragraph}</p>";
-        }
-
         return [
             'user_id' => User::factory(),
             'title' => $this->faker->sentence(),
             'excerpt' => $this->faker->paragraph(),
-            'content' => $content,
+            'content' => $this->faker->paragraphs(5, true),
             'status' => 'publish',
             'published_at' => now(),
         ];

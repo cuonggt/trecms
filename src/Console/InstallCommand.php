@@ -54,7 +54,7 @@ class InstallCommand extends Command
 
         // Service Providers...
         copy(__DIR__.'/../../stubs/app/Providers/TrecmsServiceProvider.php', app_path('Providers/TrecmsServiceProvider.php'));
-        $this->installServiceProviderAfter('RouteServiceProvider', 'TrecmsServiceProvider');
+        $this->installServiceProviderAfter('AppServiceProvider', 'TrecmsServiceProvider');
 
         // Models...
         copy(__DIR__.'/../../stubs/app/Models/User.php', app_path('Models/User.php'));
@@ -77,16 +77,13 @@ class InstallCommand extends Command
         // Routes...
         copy(__DIR__.'/../../stubs/routes/web.php', base_path('routes/web.php'));
 
-        // "Home" Route...
-        $this->replaceInFile('/home', '/', app_path('Providers/RouteServiceProvider.php'));
-
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
-                '@tailwindcss/forms' => '^0.5.2',
-                'autoprefixer' => '^10.4.2',
-                'postcss' => '^8.4.6',
-                'tailwindcss' => '^3.1.0',
+                '@tailwindcss/forms' => '^0.5.7',
+                'autoprefixer' => '^10.4.12',
+                'postcss' => '^8.4.31',
+                'tailwindcss' => '^3.2.1',
             ] + $packages;
         });
 
@@ -115,16 +112,16 @@ class InstallCommand extends Command
      */
     protected function installServiceProviderAfter(string $after, string $name): void
     {
-        $appConfig = file_get_contents(config_path('app.php'));
+        $appConfig = file_get_contents(base_path('bootstrap/providers.php'));
 
         if (! $appConfig) {
             return;
         }
 
         if (! Str::contains($appConfig, 'App\\Providers\\'.$name.'::class')) {
-            file_put_contents(config_path('app.php'), str_replace(
+            file_put_contents(base_path('bootstrap/providers.php'), str_replace(
                 'App\\Providers\\'.$after.'::class,',
-                'App\\Providers\\'.$after.'::class,'.PHP_EOL.'        App\\Providers\\'.$name.'::class,',
+                'App\\Providers\\'.$after.'::class,'.PHP_EOL.'    App\\Providers\\'.$name.'::class,',
                 $appConfig
             ));
         }

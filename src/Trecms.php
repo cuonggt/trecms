@@ -23,7 +23,7 @@ final class Trecms
      */
     public static function version(): string
     {
-        return 'v0.1.0';
+        return '0.1.0';
     }
 
     /**
@@ -47,7 +47,7 @@ final class Trecms
      */
     public static function userModel(): string
     {
-        return static::$userModel;
+        return self::$userModel;
     }
 
     /**
@@ -55,7 +55,7 @@ final class Trecms
      */
     public static function newUserModel(): Model
     {
-        $model = static::userModel();
+        $model = self::userModel();
 
         return new $model;
     }
@@ -65,9 +65,9 @@ final class Trecms
      */
     public static function useUserModel(string $model): static
     {
-        static::$userModel = $model;
+        self::$userModel = $model;
 
-        return new static;
+        return new self;
     }
 
     /**
