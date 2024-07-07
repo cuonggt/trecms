@@ -42,8 +42,9 @@ jobs:
 
       - name: Install Breeze
         run: |
-          composer update "laravel/trecms" --prefer-dist --no-interaction --no-progress -W
+          composer update "cuonggt/trecms" --prefer-dist --no-interaction --no-progress -W
           php artisan trecms:install
+          php artisan migrate
 
       - name: Install NPM dependencies
         run: npm i
@@ -53,6 +54,3 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/phpunit
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: ":memory:"
